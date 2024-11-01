@@ -1,36 +1,169 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/create-next-app).
+# Solana Trading Simulator
+
+A real-time trading simulator for Solana tokens that allows users to practice trading strategies without risking real funds. The simulator uses live price data from DexScreener to provide a realistic trading experience.
+
+![Trading Simulator Screenshot]
+
+## Features
+
+### Real-Time Trading
+
+- Close to Live price updates from DexScreener API
+- Support for any Solana token (via token address)
+- Real-time profit/loss tracking
+- Price movement indicators
+- Visual price charts (in progress)
+
+### Portfolio Management
+
+- $1,000 starting balance for practice
+- Track holdings across multiple tokens
+- Real-time portfolio value updates
+- Profit/Loss calculations per position
+- Overall portfolio performance tracking
+
+### Trading Features
+
+- Quick trade buttons ($100, $250) more to come soon
+- Buy/Sell with real-time price execution
+- Position size tracking
+- Trade history logging
+- Market statistics display
+
+### Market Data
+
+- Token price and 24h price change
+- Trading volume information
+- Market cap display
+- Liquidity information
+- Last update timestamps
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+- Node.js 18+
+- npm or pnpm
+
+### Installation
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/yourusername/solana-trading-simulator.git
+cd solana-trading-simulator
+```
+
+2. Install dependencies:
+
+```bash
+npm install
+# or
+pnpm install
+```
+
+3. Run the development server:
 
 ```bash
 npm run dev
 # or
-yarn dev
-# or
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+4. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load Inter, a custom Google Font.
+```
+├── app/
+│   └── page.tsx          # Main trading simulator page
+├── components/
+│   ├── trading-card.tsx  # Individual token trading card
+│   └── trade-history.tsx # Trade history component
+├── services/
+│   └── dexscreener-service.ts # DexScreener API integration
+├── hooks/
+│   └── use-token-data.ts # Token data fetching hook
+└── lib/
+    └── utils.ts          # Utility functions
+```
 
-## Learn More
+## Usage
 
-To learn more about Next.js, take a look at the following resources:
+1. Enter a Solana token address in the input field
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+   - Example tokens:
+   - JUP (Jupiter): `JUPyiwrYJFskUPiHa7hkeR8VUtAeFoSYbKedZNsDvCN`
+   - BONK: `DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263`
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+2. Click "Add Token" to start tracking the token
 
-## Deploy on Vercel
+3. Use the Buy/Sell buttons to execute trades:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+   - $100 increments
+   - $250 increments
+   - Real-time price execution
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+4. Monitor your positions:
+   - Current holdings
+   - Position value
+   - Profit/Loss
+   - Overall portfolio performance
+
+## Technical Details
+
+### Built With
+
+- Next.js 15 (App Router)
+- TypeScript
+- Tailwind CSS
+- shadcn/ui components
+- DexScreener API
+- Recharts for charts
+
+### API Integration
+
+- Real-time price updates every 3 seconds
+- Rate limiting (300 requests/minute)
+- Efficient batch updates
+- WebSocket-like updates
+
+### State Management
+
+- React hooks for local state
+- Real-time price subscriptions
+- Efficient update batching
+- Memory leak prevention
+
+## Rate Limits
+
+- DexScreener API: 300 requests per minute
+- Price updates: Every 3 seconds per token
+- Maximum tokens: 6 per session
+
+## Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE.md file for details
+
+## Acknowledgments
+
+- DexScreener for providing the API
+- shadcn/ui for the component library
+- Recharts for the charting library
+
+## Coming Soon
+
+- Trade execution animations
+- Price alerts
+- Stop-loss/take-profit orders
+- Trading strategy templates
+- Position sizing calculator
+- Performance analytics
